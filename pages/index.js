@@ -64,8 +64,8 @@ function DisplayQuestion({ correct_answer, incorrect_answers, question, handleBu
 
 }
 
-export default function Home() {
-  const API_URL = 'https://opentdb.com/api.php?amount=10&category=14&difficulty=easy'
+function Quiz({ Category }) {
+  const API_URL = `https://opentdb.com/api.php?amount=10&category=${Category}&difficulty=easy`
   const [questions, setQuestions] = useState(false)
   const [questionIndex, setQuestionIndex] = useState(0)
   const [score, SetScore] = useState(0);
@@ -101,7 +101,7 @@ export default function Home() {
           </div>
         ) : (
           <div>
-            <h1>{score}</h1>
+            <h1>{score}/10</h1>
           </div>
         ) : (
           <h1>Loading...</h1>
@@ -117,6 +117,69 @@ export default function Home() {
           background: #e9c46a;
         }
       `}</style>
+    </div>
+  )
+}
+
+export default function Home() {
+  const [category, setCategory] = useState('');
+  console.log(category)
+  return (
+    <div>
+      <Head>
+        <title>Taptap's Quiz</title>
+        <meta name="description" content="A Quiz Application" />
+      </Head>
+
+      {!category ? (
+        <>
+          <main>
+            <h1>Taptap's Quiz</h1>
+            <div>
+              <button onClick={(e) => { e.preventDefault(); setCategory('10'); }}>Books</button>
+              <button onClick={(e) => { e.preventDefault(); setCategory('11'); }}>Film</button>
+              <button onClick={(e) => { e.preventDefault(); setCategory('12');}}>Music</button>
+              <button onClick={(e) => { e.preventDefault(); setCategory('14');}}>Television</button>
+              <button onClick={(e) => { e.preventDefault(); setCategory('15');}}>Video Games</button>
+              <button onClick={(e) => { e.preventDefault(); setCategory('16');}}>Board Games</button>
+              <button onClick={(e) => { e.preventDefault(); setCategory('17');}}>Science & Nature</button>
+              <button onClick={(e) => { e.preventDefault(); setCategory('18');}}>Computers</button>
+              <button onClick={(e) => { e.preventDefault(); setCategory('19');}}>Mathematics</button>
+              <button onClick={(e) => { e.preventDefault(); setCategory('20');}}>Mythology</button>
+              <button onClick={(e) => { e.preventDefault(); setCategory('21');}}>Sports</button>
+            </div>
+          </main>
+          <style jsx={true}>{`
+            main {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-wrap: wrap;
+              text-align: center;
+              height: 100vh;
+              color: white;
+              width: 100vw;
+              background: #e9c46a;
+            }
+
+            h1 {
+              flex: 100%;
+            }
+
+            button {
+              color: white;
+              background: transparent;
+              margin: 10px;
+              border: 3px solid white;
+              border-radius: 10px;
+              padding: 10px;
+              font-size: 1rem;
+            }
+          `}</style>
+        </>
+      ) : (
+        <Quiz Category={category} />
+      )}
     </div>
   )
 }
