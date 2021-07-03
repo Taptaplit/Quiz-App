@@ -23,7 +23,7 @@ function DisplayQuestion({ correct_answer, incorrect_answers, question, handleBu
       <center>
         <div className="buttonContainer">
           {arr && arr.map(answer => (
-            <button style={{
+            <button key = {Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)} style={{
               background: showAnswer ? correct_answer == answer ? 'green' : 'red' : 'white'
             }} onClick={(e) => {  setShowAnswer(true); handleButtonClick(e, setShowAnswer); }} value={answer}>{answer}</button>
           ))}
