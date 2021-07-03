@@ -90,7 +90,7 @@ function Quiz({ Category }) {
   return (
     <div>
       <Head>
-        <title>Taptap's Quiz</title>
+        <title>Taptap&apos;s Quiz</title>
         <meta name="description" content="A Quiz Application" />
       </Head>
 
@@ -127,14 +127,14 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Taptap's Quiz</title>
+        <title>Taptap&apos;s Quiz</title>
         <meta name="description" content="A Quiz Application" />
       </Head>
 
       {!category ? (
         <>
           <main>
-            <h1>Taptap's Quiz</h1>
+            <h1>Taptap&apos;s Quiz</h1>
             <div>
               <button onClick={(e) => { e.preventDefault(); setCategory('10'); }}>Books</button>
               <button onClick={(e) => { e.preventDefault(); setCategory('11'); }}>Film</button>
